@@ -1,0 +1,20 @@
+﻿@model Ebook_Store.Models.Entities.AboutModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+<form action="/About/Create" method="post">
+    <div class="form-group" style="height:200px;width:500px;">
+        <textarea name="Description" class="form-control"></textarea>
+        <lebel>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })</lebel>
+    </div>
+    <input type="submit" class="form-control btn btn-sm btn-success" value="Update" />
+</form>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

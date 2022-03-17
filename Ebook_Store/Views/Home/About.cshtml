@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Ebook_Store.Models.Database.About>
+
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_FrontendLayout.cshtml";
+}
+
+<div class="row" style="text-align:center">
+    <div class="col-md-12">
+        <h2>About US</h2>
+
+        <table class="table">
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+

@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Ebook_Store.Models.Entities.OrderDetailModel>
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Super Admin Dashboard</h2>
+
+<h1>Welcome @Session["Name"]</h1>
+
+<div class="row">
+    <div class="col-md-12" style="border:1px solid blue;">
+        <h3>Total Order</h3>
+        <p>
+            @{
+                Ebook_Store.Models.Database.EbookEntities2 db = new Ebook_Store.Models.Database.EbookEntities2();
+                var admin = db.Admins.Count();
+
+                <b>Total Admin: </b> @admin;
+            }
+        </p>
+    </div>
+    
+    <div class="col-md-3" style="border:1px solid blue;">
+        
+        <p>
+            @{
+                Ebook_Store.Models.Database.EbookEntities2 db5 = new Ebook_Store.Models.Database.EbookEntities2();
+                var totalOrder = db5.Orders.Count();
+
+               <h3><b>Total Total Order: </b></h3> @totalOrder;
+            }
+        </p>
+    </div>
+
+    <div class="col-md-3">
+        <h3>Seller</h3>
+        <p>
+            @{
+                Ebook_Store.Models.Database.EbookEntities2 db1 = new Ebook_Store.Models.Database.EbookEntities2();
+                var seller = db.Sellers.Count();
+
+                <b>Total Seller: </b> @seller;
+            }
+        </p>
+    </div>
+
+
+    <div class="col-md-3">
+        <h3>Customer</h3>
+        <p>
+            @{
+                Ebook_Store.Models.Database.EbookEntities2 db2 = new Ebook_Store.Models.Database.EbookEntities2();
+                var customer = db.Customers.Count();
+
+                <b>Total Customer: </b> @customer;
+            }
+        </p>
+    </div>
+
+    <div class="col-md-3">
+        <h3>Total Product Books</h3>
+        <p>
+            @{
+                Ebook_Store.Models.Database.EbookEntities2 db4 = new Ebook_Store.Models.Database.EbookEntities2();
+                var pbook = db.ProductBooks.Count();
+
+                <b>Total Books: </b> @pbook;
+            }
+        </p>
+    </div>
+
+
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Quanity
+                </th>
+                <th>Unit Price</th>
+                <th>Book Name</th>
+                <th>order Customer Name</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.Unitprice)</td>
+                <td>@Html.DisplayFor(modelItem => item.ProductBook.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Order.Customer.Name)</td>
+
+            </tr>
+            
+            }
+
+        </table>
+
+    </div>
+</div>
+

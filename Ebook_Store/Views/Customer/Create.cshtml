@@ -1,0 +1,28 @@
+﻿@model Ebook_Store.Models.Entities.CustomerModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Cutomer</h2>
+
+<form action="/Customer/Create" method="post">
+    <input type="text" name="Name" class="form-control" placeholder="Name" />
+    <lebel>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</lebel>
+    <input type="password" name="Password" class="form-control" placeholder="Password" />
+    <lebel>@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })</lebel>
+    <input type="datetime-local" name="DOB" class="form-control" placeholder="Date of birth" />
+    <lebel>@Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })</lebel>
+    <input type="email" name="Email" class="form-control" placeholder="Email" />
+    <lebel>@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })</lebel>
+    <input type="number" name="Phone" class="form-control" placeholder="Phone Number" />
+    <lebel>@Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })</lebel>
+    <input type="text" name="Address" class="form-control" placeholder="Address" />
+    <lebel>@Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })</lebel>
+    <input type="submit" class="form-control btn btn-sm btn-success" value="Add Customer" />
+</form>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

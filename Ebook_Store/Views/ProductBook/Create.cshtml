@@ -1,0 +1,77 @@
+﻿@model Ebook_Store.Models.Entities.ProductBookModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Product Book</h2>
+
+
+<form action="/ProductBook/Create" method="post">
+    <div class="form-group">
+        <input type="text" name="Name" class="form-control" placeholder="Name" />
+        <lebel>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</lebel>
+    </div>
+    <div class="form-group">
+        <input type="number" name="Price" class="form-control" placeholder="Price" />
+        <lebel>@Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })</lebel>
+    </div>
+
+    <div class="form-group">
+        <input type="text" name="Author" class="form-control" placeholder="Author" />
+        <lebel>@Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })</lebel>
+    </div>
+
+    <div class="form-group">
+        <input type="text" name="Category" class="form-control" placeholder="Category" />
+        <lebel>@Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })</lebel>
+    </div>
+
+    <div class="form-group">
+        <input type="datetime-local" name="Date" class="form-control" placeholder="Date" />
+        <lebel>@Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })</lebel>
+    </div>
+    <div class="form-group">
+        <input type="number" name="Quantity" class="form-control" placeholder="Quantity" />
+        <lebel>@Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })</lebel>
+    </div>
+    <div class="form-group">
+        @{
+            Ebook_Store.Models.Database.EbookEntities2 db = new Ebook_Store.Models.Database.EbookEntities2();
+            List<Ebook_Store.Models.Database.Admin> admins = db.Admins.ToList();
+            <select name="Admin_Id" class="form-control">
+                @{
+                    <option value="" selected disabled>Select Admin</option>
+                    foreach (var admin in admins)
+                    {
+                        <option value="@admin.Id">@admin.Name</option>
+                    }
+                }
+            </select>
+        }
+    </div>
+    <div class="form-group">
+        @{
+            Ebook_Store.Models.Database.EbookEntities2 db1 = new Ebook_Store.Models.Database.EbookEntities2();
+            List<Ebook_Store.Models.Database.Seller> sellers = db1.Sellers.ToList();
+            <select name="Seller_Id" class="form-control">
+                @{
+                    <option value="" selected disabled>Select Seller</option>
+                    foreach (var seller in sellers)
+                    {
+                        <option value="@seller.Id">@seller.Name</option>
+                    }
+                }
+            </select>
+        }
+    </div>
+    <input type="submit" class="form-control btn btn-sm btn-success" value="Add" />
+</form>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+
+
+

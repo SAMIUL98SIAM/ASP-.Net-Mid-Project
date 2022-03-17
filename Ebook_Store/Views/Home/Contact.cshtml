@@ -1,0 +1,24 @@
+﻿@model Ebook_Store.Models.Entities.ContactModel
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_FrontendLayout.cshtml";
+}
+
+<div>
+    <h2>Contact Us</h2>
+    <form action="/Home/Contact" method="post">
+        <input type="email" name="Too" class="form-control" placeholder="Too" />
+        <lebel>@Html.ValidationMessageFor(model => model.Too, "", new { @class = "text-danger" })</lebel>
+        <input type="text" name="Subject" class="form-control" placeholder="Subject" />
+        <lebel>@Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })</lebel>
+        <input type="text" name="Body" class="form-control" placeholder="Body" />
+        <lebel>@Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })</lebel>
+        
+        <input type="submit" class="form-control btn btn-sm btn-success" value="Send" />
+        <span style="color:green">@ViewBag.Message</span>
+    </form>
+</div>
+
+ 
+

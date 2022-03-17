@@ -1,0 +1,17 @@
+﻿@model Ebook_Store.Models.Database.Admin
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Are You Sure Want to Delete  @Model.Name</h2>
+
+<div class="col-md-10">
+    <form action="/Admin/Delete" method="post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="submit" value="Delete" />
+    </form>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
